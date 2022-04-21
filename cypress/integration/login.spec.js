@@ -17,15 +17,18 @@ context('Funcionalidade Login', () => {
     });
 
     it('Login com sucesso usando Comando customizado', () => {
-        cy.login(dadosLogin.usuario, dadosLogin.senha)
+        cy.get('#username').type(dadosLogin.usuario, dadosLogin.senha)
         cy.get('.page-title').should('contain', 'Minha conta')
     });
 
     it('Login usando fixture', () => {
-        cy.fixture('perfil').then((dados) => {
-            cy.login(dados.usuario, dados.senha)
+        cy.fixture('perfil').then(dados =>{
+            cy.get('#username').type(dadosLogin.usuario)
+            cy.get('#password').type(dadosLogin.senha)
+            cy.get('.woocommerce-form > .button').click()
+
+            cy.get('.page-title').should('contain', 'Minha conta')
         })
-        cy.get('.page-title').should('contain', 'Minha conta')
     });
 
     it('Deve fazer login com sucesso - sem otimização', () => {

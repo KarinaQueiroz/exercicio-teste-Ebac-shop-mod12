@@ -1,0 +1,29 @@
+[
+    {
+        "nome": "Claúdia",
+        "sobrenome": "Alves",
+        "empresa": "EBAC",
+        "pais": "Brasil",
+        "endereco": "Av. Santo Antônio",
+        "complemento": "25 apto 03",
+        "cidade": "São Paulo",
+        "estado": "São Paulo",
+        "cep": "04453000",
+        "telefone": "11982334567",
+        "email": "ebac@teste.com"
+    },
+    
+    {
+        "nome": "Kátia",
+        "sobrenome": "Flávia",
+        "empresa": "EBAC",
+        "pais": "Brasil",
+        "endereco": "Av. Copacabana",
+        "complemento": "25 apto 03",
+        "cidade": "São Paulo",
+        "estado": "São Paulo",
+        "cep": "04453000",
+        "telefone": "11982334567",
+        "email": "ebac@teste.com"
+    }
+]
