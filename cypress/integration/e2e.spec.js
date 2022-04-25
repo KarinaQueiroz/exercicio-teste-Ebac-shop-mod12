@@ -2,24 +2,10 @@
 const dadosLogin = require('../fixtures/perfil.json')
 import faturamentoPage from '../support/page_objects/faturamento.page';
 const dadosFaturamento = require('../fixtures/faturamento.json')
-var quantidade = 2
 
 context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
-    /*  Como cliente 
-        Quero acessar a Loja EBAC 
-        Para fazer um pedido de 4 produtos 
-        Fazendo a escolha dos produtos
-        Adicionando ao carrinho
-        Preenchendo todas opções no checkout
-        E validando minha compra ao final */
     beforeEach(() => {
         cy.visit('minha-conta')
-
-
-    });
-
-    it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
-       
         cy.get('#username').type(dadosLogin.usuario)
         cy.get('#password').type(dadosLogin.senha, { log: false })
         cy.get('.woocommerce-form > .button').click()
@@ -27,16 +13,12 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, aluno_ebac')
         cy.get('#primary-menu > .menu-item-629 > a').click()
 
-        cy.get('.product-block')
-        .contains('Aero Daily Fitness Tee').click()
-        cy.wait(500)
-        cy.get('.button-variable-item-XL').click()
-        cy.get('.button-variable-item-Yellow').click()
-        cy.get('.input-text').clear().type(quantidade)
-        cy.get('.single_add_to_cart_button').click()
+    });
 
-        cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantidade)
-        cy.get('.woocommerce-message').should('contain', quantidade +' × “Aero Daily Fitness Tee” foram adicionados no seu carrinho.')
+    it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
+       
+        cy.get('.product-block')
+        cy.addProdutos('Aero Daily Fitness Tee', 'XL', 'Yellow', 2)
 
         cy.get('#primary-menu > .menu-item-629 > a').click()
         cy.addProdutos('Ariel Roll Sleeve Sweatshirt', 'L', 'Green', 2)
